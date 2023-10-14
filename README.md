@@ -1,4 +1,4 @@
-# Azure-SOC + Honeynet (Live Traffic)
+# Azure-SOC + Honeynet (Live Cyber Attacks)
 ![Cloud Honeynet / SOC](https://i.imgur.com/ZWxe03e.jpg)
 
 ## Introduction
