@@ -47,42 +47,47 @@ For the "BEFORE" metrics, all resources were originally deployed and exposed to 
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/228e66fc-0588-4854-a73a-4c1568c4c9ca)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/beb48b46-eb48-486d-9c55-129e96a2d0b6)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/36c73c5f-2c24-415d-8a2b-148e489b1625)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/3a4bce02-03d6-449b-bc87-d4118ea551f0)
 
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-10-01 03:26:23
-Stop Time 2023-10-07 15:00:29
+Start Time 2023-10-01 13:30
+Stop Time 2023-10-07 13:30
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 475834
-| Syslog                   | 194710
-| SecurityAlert            | 54
-| SecurityIncident         | 3327
-| AzureNetworkAnalytics_CL | 40207
+| SecurityEvent            | 263048
+| Syslog                   | 150660
+| SecurityAlert            | 39
+| SecurityIncident         | 1679
+| AzureNetworkAnalytics_CL | 26752
 
-## Attack Maps Before Hardening / Security Controls
-
-```All map queries actually returned no results due to no instances of malicious activity for the one week period after hardening.```
+## Attack Maps After Hardening / Security Controls
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/dc420564-2920-454b-8af8-3d83b05c3cc7)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/b2c87bea-c7ae-4c0d-93ac-837f727652b0)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/f803179e-de6e-4145-ba3d-d6d4e45c8692)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/589ab541-4380-464f-a0c6-4e9a2b67f941)
 
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another week, but after I applied security controls:
-Start Time 2023-10-07 15:37
-Stop Time	2023-10-14 15:37
+Start Time 2023-10-08 13:30
+Stop Time	2023-10-15 13:30
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 206675
-| Syslog                   | 39347
-| SecurityAlert            | 14
-| SecurityIncident         | 1438
-| AzureNetworkAnalytics_CL | 9197
+| SecurityEvent            | 174890
+| Syslog                   | 34252
+| SecurityAlert            | 10
+| SecurityIncident         | 1393
+| AzureNetworkAnalytics_CL | 7609
 
 ## Conclusion
 
 In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. After implementing more robust security controls, there was a 56.5% reduction in Windows Security Events, a 79.7% reduction in Linux Events, and a 70% reduction in security alerts, incidents, and malicious inbound network traffic.
+
+
