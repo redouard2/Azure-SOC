@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this project, a mini honeynet was constructed within the Azure platform. The objective was to capture and analyze logs from several sources, subsequently consolidated within a Log Analytics workspace. Microsoft Sentinel was deployed to leverage these logs by developing attack maps, creating alert triggers, and incident generation. Azure Sentinel measured the metrics of an insecure environment over a seven-day period. Following this phase, security controls were implemented to fortify the virtual environment. Lastly, another seven-day metric measurement phase was conducted, and the results obtained from these endeavors are presented below. The metrics analyzed were:
+In this project, a mini honeynet was constructed within the Azure platform. This project aimed to capture and analyze logs from several sources subsequently consolidated within a Log Analytics workspace. Microsoft Sentinel was deployed to leverage these logs by developing attack maps, creating alert triggers, and incident generation. Azure Sentinel measured the metrics of an insecure environment over a seven-day period. Following this phase, security controls were implemented to fortify the virtual environment. Lastly, another seven-day metric measurement phase was conducted, and the results obtained from these endeavors are presented below. The metrics analyzed were:
 
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
