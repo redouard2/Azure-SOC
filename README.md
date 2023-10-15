@@ -39,19 +39,24 @@ The architecture of the mini honeynet in Azure consists of the following compone
 - Azure Storage Account
 - Microsoft Sentinel
 
-In this project's "BEFORE" Stage, a virtual environment was deployed and exposed to the public Internet for threat actors to discover and attempt to break into the machine. This aimed to analyze these actors' attack patterns by attracting them to vulnerable-looking machines. With this plan in mind, I created a Windows virtual machine hosting a SQL database as well as a Linux server to deploy openly. I had both of the VM's network security groups (NSGs) configurations set to "Allow All." To entice these attackers even further, a storage account and key vault were deployed with public endpoints visible on the open internet. In this stage, Microsoft Sentinel monitored the unsecured environment using logs aggregated by the Log Analytics workspace.
+In this project's "BEFORE" Stage, a virtual environment was deployed and exposed to the public Internet for threat actors to discover and attempt to break into the machine. This aimed to analyze these actors' attack patterns by attracting them to vulnerable-looking machines. With this plan in mind, I created a Windows virtual machine hosting a SQL database as well as a Linux server to deploy openly. I had both of the VM's network security groups (NSGs) configurations set to "Allow All." A storage account and key vault were deployed to further entice these attackers, with public endpoints visible on the open internet. In this stage, Microsoft Sentinel monitored the unsecured environment using logs aggregated by the Log Analytics workspace.
 
 ## Attack Maps Before Hardening / Security Controls
+
 <b>This attack map shows the traffic allowed by a Network Security Group with all traffic allowed inbound</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/228e66fc-0588-4854-a73a-4c1568c4c9ca)
 
 <b>This attack map shows all the attempts threat actors trying to access the Linux virtual machine via SSH</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/beb48b46-eb48-486d-9c55-129e96a2d0b6)
 
 <b>This attack map shows all the attempts threat actors trying to access the Microsoft SQL Database Server within the Windows virtual machine</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/36c73c5f-2c24-415d-8a2b-148e489b1625)
 
 <b>This attack map shows all the attempts threat actors trying to access the Windows virtual machine via RDP</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/3a4bce02-03d6-449b-bc87-d4118ea551f0)
 
 ## Metrics Before Hardening / Security Controls
@@ -71,12 +76,32 @@ Stop Time 2023-10-07 13:30
 ## Architecture After Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
 
-For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
+The environment was hardened for the "AFTER" stage of the project, and security controls were implemented to comply with NIST SP 800-53 Rev4 SC-7(3) Access Points. These hardening tactics included:
+- <b>Network Security Groups (NSGs)</b>: NSGs were hardened by blocking all inbound and outbound traffic with the exception of designated public IP addresses that required access to the virtual machines. This ensured that only authorized traffic from a trusted source was allowed to access the virtual machines.
+
+- <b>Built-in Firewalls</b>: Azure's built-in firewalls were configured on the virtual machines to restrict unauthorized access and protect the resources from malicious connections. This step involved fine-tuning the firewall rules based on the service and responsibilities of each VM, which mitigated the attack surface bad actors had access to.
+
+- <b>Private Endpoints</b>: To enhance the security of Azure Key Vault and Storage Containers, Public Endpoints were replaced with Private Endpoints. This ensured that access to these sensitive resources was limited to the virtual network, not the public internet.
+
+- <b>Subnetting</b>: To further enhance security, a subnet was created for Azure Key Vault and Storage Containers, to further separate traffic and create an extra layer of security for those endpoints.
 
 ## Attack Maps After Hardening / Security Controls
+
+<b>This attack map shows the reduction of traffic allowed by an NSG after applying NIST 800-53 controls</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/dc420564-2920-454b-8af8-3d83b05c3cc7)
+
+<b>This attack map shows the reduction of attempts threat actors trying to access the Linux virtual machine after applying NIST 800-53 controls</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/b2c87bea-c7ae-4c0d-93ac-837f727652b0)
+
+<b>This attack map shows the elimination of attempts from threat actors trying to access the Database Server after applying NIST 800-53 controls</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/f803179e-de6e-4145-ba3d-d6d4e45c8692)
+
+
+<b>This attack map shows the reduction of attempts threat actors trying to access the Windows virtual machine after applying NIST 800-53 controls</b>
+
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/589ab541-4380-464f-a0c6-4e9a2b67f941)
 
 ## Metrics After Hardening / Security Controls
@@ -95,6 +120,6 @@ Stop Time	2023-10-15 13:30
 
 ## Conclusion
 
-In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. After implementing more robust security controls, there was a 56.5% reduction in Windows Security Events, a 79.7% reduction in Linux Events, and a 70% reduction in security alerts, incidents, and malicious inbound network traffic.
+In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. After implementing more robust security controls, there was a 34% reduction in Windows Security Events, a 77% reduction in Linux Events, and a 54% reduction in security alerts, incidents, and malicious inbound network traffic.
 
 
