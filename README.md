@@ -121,6 +121,11 @@ Stop Time	2023-10-15 13:30
 | SecurityIncident         | 1393
 | AzureNetworkAnalytics_CL | 7609
 
+
+## Reflection
+
+This project has opened my eyes to the necessity of security, and I had massive fun creating it. It is truly imperative to have proper security controls and configurations in place to protect your resources. The before and after metrics highlight the drastic difference between an insecure and a secure environment, and the map data illustrate the changes. Firewall rules, private endpoints, and not allowing public internet access must be implemented to prevent disastrous consequences caused by attacks from threat actors and unauthorized access to critical assets and resources.
+
 ## Conclusion
 
 In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. After implementing more robust security controls, there was a 34% reduction in Windows Security Events, a 77% reduction in Linux Events, and a 54% reduction in security alerts, incidents, and malicious inbound network traffic.
