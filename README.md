@@ -30,17 +30,6 @@ In this project, a mini honeynet was constructed within the Azure platform. This
 ## Architecture Before Hardening / Security Controls
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/78297901-db52-4f5b-8110-8cd58ef5c234)
 
-
-The architecture of the mini honeynet in Azure consists of the following components:
-
-- Virtual Network (VNet)
-- Network Security Group (NSG)
-- Virtual Machines (2 Windows, 1 Linux)
-- Log Analytics Workspace
-- Azure Key Vault
-- Azure Storage Account
-- Microsoft Sentinel
-
 In this project's "BEFORE" Stage, a virtual environment was deployed and exposed to the public Internet for threat actors to discover and attempt to break into the machine. This aimed to analyze these actors' attack patterns by attracting them to vulnerable-looking machines. With this plan in mind, I created a Windows virtual machine hosting a SQL database as well as a Linux server to deploy openly. I had both of the VM's network security groups (NSGs) configurations set to "Allow All." A storage account and key vault were deployed to further entice these attackers, with public endpoints visible on the open internet. In this stage, Microsoft Sentinel monitored the unsecured environment using logs aggregated by the Log Analytics workspace.
 
 ## Attack Maps Before Hardening / Security Controls
