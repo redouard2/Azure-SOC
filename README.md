@@ -1,5 +1,6 @@
 # Azure-SOC + Honeynet (Live Cyber Attacks)
-![Cloud Honeynet / SOC](https://i.imgur.com/ZWxe03e.jpg)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/4402bbf2-3c17-4032-9568-2e2f5925c296)
+
 
 ## Introduction
 
@@ -27,7 +28,8 @@ In this project, a mini honeynet was constructed within the Azure platform. This
 - [NIST SP 800-61 Revision 2](https://www.nist.gov/privacy-framework/nist-sp-800-61) for Incident Handling Guidance
 
 ## Architecture Before Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/78297901-db52-4f5b-8110-8cd58ef5c234)
+
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
@@ -74,7 +76,8 @@ Stop Time 2023-10-07 13:30
 | AzureNetworkAnalytics_CL | 26752
 
 ## Architecture After Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/67367dc2-6013-46f3-92d4-94892b21e746)
+
 
 The environment was hardened for the "AFTER" stage of the project, and security controls were implemented to comply with NIST SP 800-53 Rev4 SC-7(3) Access Points. These hardening tactics included:
 - <b>Network Security Groups (NSGs)</b>: NSGs were hardened by blocking all inbound and outbound traffic with the exception of designated public IP addresses that required access to the virtual machines. This ensured that only authorized traffic from a trusted source was allowed to access the virtual machines.
