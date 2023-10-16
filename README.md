@@ -1,5 +1,6 @@
 # Azure-SOC + Honeynet (Live Cyber Attacks)
-![image](https://github.com/redouard2/Azure-SOC/assets/73624384/4402bbf2-3c17-4032-9568-2e2f5925c296)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/575fbe98-aa7d-4973-8a2f-49ad266bdf7a)
+
 
 
 ## Introduction
