@@ -66,7 +66,7 @@ Stop Time 2023-10-07 13:30
 | AzureNetworkAnalytics_CL | 26752
 
 ## Architecture After Hardening / Security Controls
-![image](https://github.com/redouard2/Azure-SOC/assets/73624384/67367dc2-6013-46f3-92d4-94892b21e746)
+![image](https://github.com/redouard2/Azure-SOC/assets/73624384/de660f3a-fdf9-4ab6-86ce-08c970153339)
 
 
 The environment was hardened for the "AFTER" stage of the project, and security controls were implemented to comply with NIST SP 800-53 Rev4 SC-7(3) Access Points. These hardening tactics included:
