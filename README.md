@@ -5,7 +5,7 @@
 
 ## Introduction
 
-In this project, a mini honeynet was constructed within the Azure platform. This project aimed to capture and analyze logs from several sources subsequently consolidated within a Log Analytics workspace. Microsoft Sentinel was deployed to leverage these logs by developing attack maps, creating alert triggers, and incident generation. Azure Sentinel measured the metrics of an insecure environment over a seven-day period. Following this phase, security controls were implemented to fortify the virtual environment. Lastly, another seven-day metric measurement phase was conducted, and the results obtained from these endeavors are presented below. The metrics analyzed were:
+In this project, a mini honeynet was constructed within the Azure platform. This project aimed to capture and analyze logs from several sources subsequently consolidated within a Log Analytics workspace. Microsoft Sentinel was deployed to leverage these logs by developing attack maps, creating alert triggers, and incident generation. Azure Sentinel measured the metrics of an insecure environment over a seven-day period. Following this phase, security controls were implemented to fortify the virtual environment. Following that, another seven-day metric measurement phase was conducted, and the results obtained from these endeavors are presented below. Lastly, a final seven-day metric measurement phase was conducted to see the differences between the first week of controls introduced and the second week afterward, and the results obtained from these endeavors are presented below. The metrics analyzed were:
 
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
@@ -54,31 +54,31 @@ In this project's "BEFORE" Stage, a virtual environment was deployed and exposed
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-10-01 13:30
-Stop Time 2023-10-07 13:30
+Start Time 2023-10-01 12:00
+Stop Time 2023-10-07 12:00
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 263048
-| Syslog                   | 150660
+| SecurityEvent            | 292830
+| Syslog                   | 152543
 | SecurityAlert            | 39
-| SecurityIncident         | 1679
-| AzureNetworkAnalytics_CL | 26752
+| SecurityIncident         | 1843
+| AzureNetworkAnalytics_CL | 28580
 
-## Architecture After Hardening / Security Controls
+## Architecture After Week 1 of Hardening / Security Controls
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/e79a4e43-40cf-4298-98e4-ed9d7dce9d93)
 
 
 The environment was hardened for the "AFTER" stage of the project, and security controls were implemented to comply with NIST SP 800-53 Rev4 SC-7(3) Access Points. These hardening tactics included:
-- <b>Network Security Groups (NSGs)</b>: NSGs were hardened by blocking all inbound and outbound traffic with the exception of designated public IP addresses that required access to the virtual machines. This ensured that only authorized traffic from a trusted source was allowed to access the virtual machines.
+- <b>Network Security Groups (NSGs)</b>: NSGs were hardened by blocking all inbound and outbound traffic except for designated public IP addresses that required access to the virtual machines. This ensured that only authorized traffic from a trusted source could access the virtual machines.
 
 - <b>Built-in Firewalls</b>: Azure's built-in firewalls were configured on the virtual machines to restrict unauthorized access and protect the resources from malicious connections. This step involved fine-tuning the firewall rules based on the service and responsibilities of each VM, which mitigated the attack surface bad actors had access to.
 
 - <b>Private Endpoints</b>: To enhance the security of Azure Key Vault and Storage Containers, Public Endpoints were replaced with Private Endpoints. This ensured that access to these sensitive resources was limited to the virtual network, not the public internet.
 
-- <b>Subnetting</b>: To further enhance security, a subnet was created for Azure Key Vault and Storage Containers, to further separate traffic and create an extra layer of security for those endpoints.
+- <b>Subnetting</b>: To further enhance security, a subnet was created for Azure Key Vault and Storage Containers to separate traffic further and create an extra layer of security for those endpoints.
 
-## Attack Maps After Hardening / Security Controls
+## Attack Maps After Week 1 Hardening / Security Controls
 
 <b>This attack map shows the reduction of traffic allowed by an NSG after applying NIST 800-53 controls</b>
 
@@ -97,20 +97,41 @@ The environment was hardened for the "AFTER" stage of the project, and security 
 
 ![image](https://github.com/redouard2/Azure-SOC/assets/73624384/589ab541-4380-464f-a0c6-4e9a2b67f941)
 
-## Metrics After Hardening / Security Controls
+## Metrics After Week 1 of Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another week, but after I applied security controls:
-Start Time 2023-10-08 13:30
-Stop Time	2023-10-15 13:30
+Start Time 2023-10-08 12:00
+Stop Time	2023-10-14 12:00
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 174890
-| Syslog                   | 34252
-| SecurityAlert            | 10
-| SecurityIncident         | 1393
-| AzureNetworkAnalytics_CL | 7609
+| SecurityEvent            | 108065
+| Syslog                   | 22888
+| SecurityAlert            | 7
+| SecurityIncident         | 1253
+| AzureNetworkAnalytics_CL | 2699
 
+## Architecture After Week 2 of Hardening / Security Controls
+
+```The environment has not changed from the controls set in place in Week 1. No changes were necessary.```
+
+## Attack Maps After Week 2 of Hardening / Security Controls
+
+```All map queries actually returned no results due to no instances of malicious activity for this seven-day period phase after hardening.```
+
+## Metrics After Week 2 of Hardening / Security Controls
+
+The following table shows the metrics we measured in our environment for another week, but after I applied security controls:
+Start Time 2023-10-15 12:00
+Stop Time	2023-10-21 12:00
+
+| Metric                   | Count
+| ------------------------ | -----
+| SecurityEvent            | 50724
+| Syslog                   | 2
+| SecurityAlert            | 0
+| SecurityIncident         | 0
+| AzureNetworkAnalytics_CL | 0
 
 ## Reflection
 
@@ -118,6 +139,6 @@ This project has opened my eyes to the necessity of security, and I had massive 
 
 ## Conclusion
 
-In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. After implementing more robust security controls, there was a 34% reduction in Windows Security Events, a 77% reduction in Linux Events, and a 54% reduction in security alerts, incidents, and malicious inbound network traffic.
+In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. After implementing more robust security controls, for week 1, there was a 34% reduction in Windows Security Events, a 77% reduction in Linux Events, and a 54% reduction in security alerts, incidents, and malicious inbound network traffic. For week 2, there was a 53% reduction in Windows Security Events, a 99.99% reduction in Linux Events, and a 100% reduction in security alerts, incidents, and malicious inbound network traffic. 
 
 
