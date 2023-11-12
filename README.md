@@ -74,9 +74,9 @@ The environment was hardened for the "AFTER" stage of the project, and security 
 
 - <b>Built-in Firewalls</b>: Azure's built-in firewalls were configured on the virtual machines to restrict unauthorized access and protect the resources from malicious connections. This step involved fine-tuning the firewall rules based on the service and responsibilities of each VM, which mitigated the attack surface bad actors had access to.
 
-- <b>Private Endpoints</b>: To enhance the security of Azure Key Vault and Storage Containers, Public Endpoints were replaced with Private Endpoints. This ensured that access to these sensitive resources was limited to the virtual network, not the public internet.
+- <b>Private Endpoints</b>: To enhance the security of Azure Key Vault and Storage Containers, Public Endpoints were replaced with Private Endpoints. This ensured that these sensitive resources were limited to the virtual network, not the public internet.
 
-- <b>Subnetting</b>: To further enhance security, a subnet was created for Azure Key Vault and Storage Containers to separate traffic further and create an extra layer of security for those endpoints.
+- <b>Subnetting</b>: To further enhance security, a subnet was created for Azure Key Vault and Storage Containers to separate traffic further and make an extra layer of protection for those endpoints.
 
 ## Attack Maps After Week 1 Hardening / Security Controls
 
@@ -117,7 +117,7 @@ Stop Time	2023-10-14 12:00
 
 ## Attack Maps After Week 2 of Hardening / Security Controls
 
-```All map queries actually returned no results due to no instances of malicious activity for this seven-day period phase after hardening.```
+```All map queries returned no results due to no instances of malicious activity for this seven-day period phase after hardening.```
 
 ## Metrics After Week 2 of Hardening / Security Controls
 
@@ -139,6 +139,25 @@ This project has opened my eyes to the necessity of security, and I had massive 
 
 ## Conclusion
 
-In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. After implementing more robust security controls, for week 1, there was a 34% reduction in Windows Security Events, a 77% reduction in Linux Events, and a 54% reduction in security alerts, incidents, and malicious inbound network traffic. For week 2, there was a 53% reduction in Windows Security Events, a 99.99% reduction in Linux Events, and a 100% reduction in security alerts, incidents, and malicious inbound network traffic. 
+In this project, a mini but effective honeynet was constructed in Microsoft Azure, and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was configured to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the unsecured environment before security controls were applied and after implementing security measures. The metrics below show the change percentage after applying security controls in week 1 and week 2.
 
 
+### Impact of Security Controls Week 1
+
+| Metric                                       | Change post-hardening
+| -------------------------------------------- | -----
+| SecurityEvent (Windows VMs)                  | 63.1%
+| Syslog (Linux VMs)                           | 85%
+| SecurityAlert (Microsoft Defender for Cloud) | 82.05%
+| SecurityIncident (Sentinel Incidents)        | 32.01%
+| AzureNetworkAnalytics_CL                     | 92.56%
+
+### Impact of Security Controls Week 2
+
+| Metric                                       | Change post-hardening
+| -------------------------------------------- | -----
+| SecurityEvenpracticals VMs)                  | 53.06%
+| Syslog (Linux VMs)                           | 99.99%
+| SecurityAlert (Microsoft Defender for Cloud) | 100%
+| SecurityIncident (Sentinel Incidents)        | 100%
+| AzureNetworkAnalytics_CL                     | 100%
