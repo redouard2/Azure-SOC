@@ -156,7 +156,7 @@ In this project, a mini but effective honeynet was constructed in Microsoft Azur
 
 | Metric                                       | Change post-hardening
 | -------------------------------------------- | -----
-| SecurityEvenpracticals VMs)                  | 53.06%
+| SecurityEvent (Windows VMs)                  | 53.06%
 | Syslog (Linux VMs)                           | 99.99%
 | SecurityAlert (Microsoft Defender for Cloud) | 100%
 | SecurityIncident (Sentinel Incidents)        | 100%
